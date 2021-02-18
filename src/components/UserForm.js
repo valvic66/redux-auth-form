@@ -1,34 +1,49 @@
-import React from "react";
+import React, { Component } from "react";
 import './index.css';
+import { emailChanged } from '../actions';
+import { connect } from 'react-redux';
 
-export default function UserForm() {
-  const handleEmailChange = text => {
-    
-  };
+class UserForm extends Component{
+    handleEmailChange = email => {
+        this.props.emailChanged(email);
+    };
 
-  return (
-    <div className="form-wrapper">
-      <form method="post">
-        <h3 class="form-name">Registration form</h3>
+    render() {
+        console.log(this.props.email);
 
-        <div class="user-field">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            onChange={handleEmailChange}
-          />
+        return (
+        <div className="form-wrapper">
+            <form method="post">
+            <h3 className="form-name">Registration form</h3>
+
+            <div className="user-field">
+                <label htmlFor="email">Email</label>
+                <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                onChange={this.handleEmailChange}
+                // value={this.props.email}
+                />
+            </div>
+
+            <div className="user-field">
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+
+            <button type="submit">SIGN UP</button>
+            </form>
         </div>
+        );
+    };
+};
 
-        <div class="user-field">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required />
-        </div>
+const mapStateToProps = state => {
+    return {
+        email: state.authentication.email
+    }
+};
 
-        <button type="submit">SIGN UP</button>
-      </form>
-    </div>
-  );
-}
+export default connect(mapStateToProps, { emailChanged })(UserForm);

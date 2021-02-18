@@ -8,11 +8,11 @@ import { createStore } from 'redux';
 import reducers from './reducers'
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={createStore(reducers)}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>,
   document.getElementById('root')
 );
 
