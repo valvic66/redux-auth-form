@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './index.css';
-import { emailChanged } from '../actions';
+import { emailChanged, passwordChanged } from '../actions';
 import { connect } from 'react-redux';
 
 class UserForm extends Component{
@@ -8,7 +8,12 @@ class UserForm extends Component{
         this.props.emailChanged(email.target.value);
     };
 
+    handlePasswordChange = password => {
+        this.props.passwordChanged(password.target.value);
+    };
+
     render() {
+        console.log(this.props);
         return (
             <div className="form-wrapper">
                 <form method="post">
@@ -29,7 +34,14 @@ class UserForm extends Component{
 
                     <div className="user-field">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" required />
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required
+                            onChange={this.handlePasswordChange}
+                            value={this.props.password}
+                        />
                     </div>
 
                     <button type="submit">SIGN UP</button>
@@ -41,8 +53,9 @@ class UserForm extends Component{
 
 const mapStateToProps = state => {
     return {
-        email: state.authentication.email
+        email: state.authentication.email,
+        password: state.authentication.password
     }
 };
 
-export default connect(mapStateToProps, { emailChanged })(UserForm);
+export default connect(mapStateToProps, { emailChanged, passwordChanged })(UserForm);
