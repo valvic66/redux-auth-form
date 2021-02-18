@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     password: '',
     loading: false,
     error: '',
-    user: null,
+    userData: null,
     status: 'Not logged in!'
 };
 
@@ -17,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
         case PASSWORD_CHANGED:
             return {...state, password: action.payload}
         case LOGIN_SUCCESS:
-            return {...state, status: 'Logged in!'}
+            return {...state, status: 'Logged in!', userData: action.payload}
         default:
             return state;
     };
