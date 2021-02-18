@@ -35,6 +35,7 @@
     ]
   },
   "devDependencies": {
-    "firebase": "^8.2.7"
+    "firebase": "^8.2.7",
+    "redux-thunk": "^2.3.0"
   }
 }

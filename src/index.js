@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore,applyMiddleware } from 'redux';
 import reducers from './reducers'
+import ReduxThunk from 'redux-thunk';
+
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
 ReactDOM.render(
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
       <React.StrictMode>
         <App />
       </React.StrictMode>

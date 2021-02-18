@@ -1,76 +1,68 @@
 .form-wrapper {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 80vh;
-width: 100%;
-}
-
-form {
-display: flex;
-flex-direction: column;
-width: 60%;
-padding: 0 14px;
-background-color: #fff;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 0 14px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
 form:hover {
-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .form-name {
-padding: 10px;
-text-align: center;
-text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .user-field {
-display: flex;
-flex-direction: column;
-margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .user-field input {
-font-size: 16px;
-box-sizing: border-box;
-width: 100%;
-height: 46px;
-padding: 8px 10px;
-margin: 8px 0;
-outline: none;
-background-color: #f3f2f3;
-border: 2px solid #ccc;
-border-radius: 1px;
--webkit-transition: 0.5s;
-transition: 0.5s;
+    font-size: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 46px;
+    padding: 8px 10px;
+    margin: 8px 0;
+    outline: none;
+    background-color: #f3f2f3;
+    border: 2px solid #ccc;
+    border-radius: 1px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
 }
 
 .user-field label {
-font-size: 15px;
+    font-size: 15px;
 }
 
 .user-field input:focus {
-border: 2px solid #555;
+    border: 2px solid #555;
 }
 
 button {
-font-size: 14px;
-font-weight: 800;
-padding: 10px 20px;
-align-self: center;
-color: #ffffff;
-background-color: #4caf50;
-border: none;
-outline: none;
-cursor: pointer;
-text-transform: uppercase;
--webkit-transition: 0.3s;
-transition: 0.3s;
-margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 10px 20px;
+    align-self: center;
+    color: #ffffff;
+    background-color: #4caf50;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    margin-bottom: 15px;
 }
 
 button:hover {
-background-color: #46a049;
+    background-color: #46a049;
 }
