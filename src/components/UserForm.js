@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import './index.css';
 import { emailChanged, passwordChanged, checkLogin } from '../actions';
 import { connect } from 'react-redux';
+import ClipLoader from "react-spinners/ClipLoader";
+import classnames from 'classnames';
+import { Status } from './Status';
 
 class UserForm extends Component{
     handleEmailChange = event => {
@@ -18,8 +21,8 @@ class UserForm extends Component{
         this.props.checkLogin({ email, password });
     };
 
+    
     render() {
-        console.log(this.props);
         return (
             <div className="form-wrapper">
                 <h3 className="form-name">Registration form</h3>
@@ -40,18 +43,24 @@ class UserForm extends Component{
                 <div className="user-field">
                     <label htmlFor="password">Password</label>
                     <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
+                        type="password"
+                        id="password"
+                        name="password"
                         required
                         onChange={this.handlePasswordChange}
                         value={this.props.password}
                     />
                 </div>
 
-                <button onClick={this.handleLogIn}>LOG IN</button>
+                {this.props.status && <Status status={this.props.status} />}
 
-                <p>{this.props.status}</p>
+                {this.props.loading ? (
+                    <div>
+                        <ClipLoader loading={this.props.loading} size={30} />
+                    </div>
+                ):(
+                   <button onClick={this.handleLogIn}>Log In</button>
+                )}
             </div>
         );
     };
@@ -62,7 +71,8 @@ const mapStateToProps = state => {
         email: state.authentication.email,
         password: state.authentication.password,
         status: state.authentication.status,
-        userData: state.authentication.userData
+        userData: state.authentication.userData,
+        loading: state.authentication.loading
     }
 };
 

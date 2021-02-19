@@ -50,14 +50,13 @@ form:hover {
 button {
     font-size: 14px;
     font-weight: 800;
-    padding: 10px 20px;
+    padding: 10px 30px;
     align-self: center;
     color: #ffffff;
     background-color: #4caf50;
     border: none;
     outline: none;
     cursor: pointer;
-    text-transform: uppercase;
     -webkit-transition: 0.3s;
     transition: 0.3s;
     margin-bottom: 15px;
@@ -65,4 +64,8 @@ button {
 
 button:hover {
     background-color: #46a049;
+}
+
+.error {
+    color: red;
 }
