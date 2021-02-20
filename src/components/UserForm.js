@@ -4,7 +4,7 @@ import { emailChanged, passwordChanged, checkLogin } from '../actions';
 import { connect } from 'react-redux';
 import ClipLoader from "react-spinners/ClipLoader";
 import classnames from 'classnames';
-import { Status } from './Status';
+import { Message } from './Message';
 
 class UserForm extends Component{
     handleEmailChange = event => {
@@ -23,6 +23,9 @@ class UserForm extends Component{
 
     
     render() {
+        // destructuring properties from state
+        const { statusText, isStatusError, loading } = this.props;
+
         return (
             <div className="form-wrapper">
                 <h3 className="form-name">Registration form</h3>
@@ -52,11 +55,11 @@ class UserForm extends Component{
                     />
                 </div>
 
-                {this.props.status && <Status status={this.props.status} />}
+                {statusText && <Message message={statusText} isMessageError={isStatusError} />}
 
-                {this.props.loading ? (
+                {loading ? (
                     <div>
-                        <ClipLoader loading={this.props.loading} size={30} />
+                        <ClipLoader loading={loading} size={30} />
                     </div>
                 ):(
                    <button onClick={this.handleLogIn}>Log In</button>
@@ -70,9 +73,10 @@ const mapStateToProps = state => {
     return {
         email: state.authentication.email,
         password: state.authentication.password,
-        status: state.authentication.status,
         userData: state.authentication.userData,
-        loading: state.authentication.loading
+        loading: state.authentication.loading,
+        statusText: state.authentication.statusText,
+        isStatusError: state.authentication.isStatusError
     }
 };
 

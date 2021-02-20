@@ -11,7 +11,8 @@ const INITIAL_STATE = {
     password: '',
     loading: false,
     userData: null,
-    status: ''
+    statusText: '',
+    isStatusError: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -20,13 +21,12 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, email: action.payload}
         case PASSWORD_CHANGED:
             return {...state, password: action.payload}
-        case LOGIN_SUCCESS:
-            // reset to initial state if login successful 
-            return {...state, ...INITIAL_STATE, status: 'Logged in!', userData: action.payload}
         case LOGIN_START:
             return {...state, loading: true}
+        case LOGIN_SUCCESS:
+            return {...state, statusText: 'Logged in!',  isStatusError: false, userData: action.payload, loading: false,}
         case LOGIN_ERROR:
-            return {...state, ...INITIAL_STATE, status: 'Login error!'}
+            return {...state, statusText: 'Login error!', isStatusError: true, loading: false}
         default:
             return state;
     };
